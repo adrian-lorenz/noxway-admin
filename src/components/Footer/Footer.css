@@ -1,0 +1,28 @@
+.footer {
+    background-color: #f0f0f0;
+    padding: 10px;
+    font-size: 14px;
+    text-align: center;
+    position: fixed;
+    display: block  ;
+    left: 0;
+    height: 20px;
+    bottom: 0;
+    width: 100%;
+    color: black;
+    z-index: 1001;
+}
+
+.footer span {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.footer span:first-child {
+    margin-left: 10px;
+}
+
+.footer span:last-child {
+    margin-right: 20px;
+    float: right;
+}

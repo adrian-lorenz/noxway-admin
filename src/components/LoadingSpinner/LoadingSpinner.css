@@ -1,0 +1,38 @@
+@keyframes spinner {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+.loading-spinner {
+    width: 100px;
+    height:100px;
+    border: 15px solid #f3f3f3; /* Light grey */
+    border-top: 15px solid #0F7BC0; /* Blue */
+    border-radius: 50%;
+    animation: spinner 1.5s linear infinite;
+    
+    margin: auto;
+  
+}
+
+.spinner-container {
+
+ 
+    z-index: 1000;
+
+    
+
+
+}
+.spinner_text{
+    margin-top: 40px;
+    
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 28px;
+    text-align: center;
+}
