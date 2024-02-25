@@ -69,6 +69,10 @@ function LoginForm() {
     if (location.includes('localhost')) {
       location = location.replace('localhost', '127.0.0.1');
     }
+
+    if (location.includes('/web')) {
+      location = location.replace('/web', '');
+    }
     localStorage.setItem('host', location);
   }
   const [userName, setUserName] = useState<string>('');
