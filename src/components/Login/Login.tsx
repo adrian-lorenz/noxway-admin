@@ -70,10 +70,10 @@ function LoginForm() {
       location = location.replace('localhost', '127.0.0.1');
     }
 
-    if (location.includes('/web')) {
-      location = location.replace('/web', '');
-    }
-    localStorage.setItem('host', location);
+    const parts = location.split("/");
+    const baseUrl = parts.slice(0, 3).join("/");
+
+    localStorage.setItem('host', baseUrl);
   }
   const [userName, setUserName] = useState<string>('');
   const [password, setPassword] = useState<string>('');

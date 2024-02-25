@@ -253,6 +253,7 @@ const KonfigurationsKomponente: React.FC = () => {
               <SpaceDivider />
               <TextBox
                 id='t4'
+               
                 label="Hostname"
                 helperText="Domain tld oder IP adress"
                 value={konfiguration.hostname}
@@ -313,9 +314,11 @@ const KonfigurationsKomponente: React.FC = () => {
         <Styledbox>
           <CheckBox
             label="Rate Limiter"
-            checked={konfiguration.rateLimiter ? true : false}
-            onChange={() => {
-             
+            checked={konfiguration.rateLimiter }
+            onChange={(e) => {
+              const updatedConf = { ...konfiguration };
+              updatedConf.rateLimiter = e.target.checked;
+              setKonfiguration(updatedConf);
             }}
           />
           <SpaceDivider />

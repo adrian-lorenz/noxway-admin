@@ -39,10 +39,11 @@ interface EndpointData {
 interface EndpointProps {
   endpointData: EndpointData;
   onSave: (data: EndpointData) => void;
+  basic: boolean;
   onCancel: () => void;
 }
 
-const Endpoint: React.FC<EndpointProps> = ({ endpointData, onSave, onCancel }) => {
+const Endpoint: React.FC<EndpointProps> = ({ endpointData, onSave, onCancel,basic }) => {
   const [endpoint, setEndpoint] = useState<EndpointData>(endpointData);
 
   const updateHeaderRouteMatches = (newList: any) => {
@@ -120,10 +121,13 @@ const Endpoint: React.FC<EndpointProps> = ({ endpointData, onSave, onCancel }) =
       </Styledbox>
       <SpaceDivider />
       {/* ------------ Header match */}
-      <Styledbox>
-        <KeyValueEditor list={endpoint.HeaderRouteMatches} setList={updateHeaderRouteMatches} modalCaption={'Add Header match'} caption={'Header Routing match'} />
-      </Styledbox>
-      <SpaceDivider />
+      
+      {!basic && (
+        <Styledbox>
+          <KeyValueEditor list={endpoint.HeaderRouteMatches} setList={updateHeaderRouteMatches} modalCaption={'Add Header match'} caption={'Header Routing match'} />
+        </Styledbox>
+      )}
+    
       {/* ------------ VerifySSL */}
       <Styledbox>
         <KeyValueEditor list={endpoint.HeaderAdd} setList={updateHeaderAdd} modalCaption={'Add Header'} caption={'Header Add'} />

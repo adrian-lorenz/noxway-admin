@@ -65,6 +65,7 @@ const Endpoints = () => {
   const [alertState, setAlertState] = useState(false);
   const [isEditorOpen, setIsEditorOpen] = useState(false);
   const [selectedEndpoint, setSelectedEndpoint] = useState<EndpointData | null>(null);
+  const [basicEndpoint, setBasicEndpoint] = useState(false);
   const [dialogAddBasic, setDialogAddBasic] = useState(false);
 
   const [open, setOpen] = useState(false);
@@ -130,8 +131,9 @@ const Endpoints = () => {
       setServices(updatedServices);
     };
 
-    const handleEditClick = (endpointData: EndpointData) => {
+    const handleEditClick = (endpointData: EndpointData, basic: boolean) => {
       setSelectedEndpoint(endpointData);
+      setBasicEndpoint(basic);
       setIsEditorOpen(true);
     };
 
@@ -302,7 +304,7 @@ const Endpoints = () => {
     return (
       <Container title="Endpoints">
         {isEditorOpen && selectedEndpoint ? (
-            <Endpoint endpointData={selectedEndpoint} onSave={handleEditorSave} onCancel={handleEditorCancel} />
+            <Endpoint basic={basicEndpoint} endpointData={selectedEndpoint} onSave={handleEditorSave} onCancel={handleEditorCancel} />
         ) : (
           <>
             <Typography variant="h4" gutterBottom>Services</Typography>
@@ -333,7 +335,7 @@ const Endpoints = () => {
                           />
                         </TableCell>
                         <TableCell>
-                          <IconButton onClick={() => handleEditClick(service.BasicEndpoint)}><EditIcon /></IconButton>
+                          <IconButton onClick={() => handleEditClick(service.BasicEndpoint, true)}><EditIcon /></IconButton>
                           <IconButton onClick={() => handleDeleteService(service.UUID)}><DeleteIcon /></IconButton>
                           <IconButton onClick={() => handleAddSubService(service.UUID, service.Name)}><AddBoxIcon /></IconButton>
                         </TableCell>
@@ -345,7 +347,7 @@ const Endpoints = () => {
                           <TableCell>{endpoint.Endpoint}</TableCell>
                           <TableCell></TableCell>
                           <TableCell>
-                            <IconButton onClick={() => handleEditClick(endpoint)}><EditIcon /></IconButton>
+                            <IconButton onClick={() => handleEditClick(endpoint,false)}><EditIcon /></IconButton>
                             <IconButton onClick={() => handleDeleteEndpoint(service.UUID, endpoint.UUID)}><DeleteIcon /></IconButton>
                           </TableCell>
                         </TableRow>
