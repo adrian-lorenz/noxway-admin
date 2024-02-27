@@ -31,9 +31,7 @@ interface Configuration {
   };
   rateLimiter: boolean;
   rateWhitelist: string[];
-  metric: boolean;
-  metricPath: string;
-  metricWhitelist: string[];
+  systemWhitelist: string[];
   cors: boolean;
   corsAdvanced: boolean;
   corsAllowOrigins: string[];
@@ -98,8 +96,8 @@ const KonfigurationsKomponente: React.FC = () => {
       setOpen(false);
     };
 
-    const updateMeticWhitelist = (newList: string[]) => {
-      setKonfiguration({ ...konfiguration, metricWhitelist: newList });
+    const updateSystemWhitelist = (newList: string[]) => {
+      setKonfiguration({ ...konfiguration, systemWhitelist: newList });
     };
 
     const updateRateWhitelist = (newList: string[]) => {
@@ -255,6 +253,7 @@ const KonfigurationsKomponente: React.FC = () => {
               <SpaceDivider />
               <TextBox
                 id='t4'
+               
                 label="Hostname"
                 helperText="Domain tld oder IP adress"
                 value={konfiguration.hostname}
@@ -315,9 +314,11 @@ const KonfigurationsKomponente: React.FC = () => {
         <Styledbox>
           <CheckBox
             label="Rate Limiter"
-            checked={konfiguration.rateLimiter ? true : false}
-            onChange={() => {
-             
+            checked={konfiguration.rateLimiter }
+            onChange={(e) => {
+              const updatedConf = { ...konfiguration };
+              updatedConf.rateLimiter = e.target.checked;
+              setKonfiguration(updatedConf);
             }}
           />
           <SpaceDivider />
@@ -364,41 +365,16 @@ const KonfigurationsKomponente: React.FC = () => {
           )}
         </Styledbox>
         <SpaceDivider />
-        <Styledbox>
-          <CheckBox
-            label="Metrics"
-            checked={konfiguration.metric}
-            onChange={(e) => {
-              const updatedConf = { ...konfiguration };
-              updatedConf.metric = e.target.checked;
-              setKonfiguration(updatedConf);
-            }}
-          />
-          <SpaceDivider />
-          <TextBox
-          id='t9'
-            label="Metric Path"
-            helperText="GET metrics path url"
-            value={konfiguration.metricPath}
-            validationType={'urla'}
-            onChange={(e) => {
-              const updatedConf = { ...konfiguration };
-              updatedConf.metricPath = e.target.value;
-              setKonfiguration(updatedConf);
-            }}
-            
-          />
-          <SpaceDivider />
-        </Styledbox>
+      
         <SpaceDivider />
         <Styledbox>
           <StringlistEditor
             validationType={'ip'}
             notEmpty={true}
-            whitelist={konfiguration.metricWhitelist}
-            setWhitelist={updateMeticWhitelist}
+            whitelist={konfiguration.systemWhitelist}
+            setWhitelist={updateSystemWhitelist}
             modalcaption={'Neue IP hinzufügen'}
-            caption={'Internal Whitelist / Metrics / Login / Garaphs'}
+            caption={'Internal Whitelist / Login / Garaphs'}
           />
         </Styledbox>
         <SpaceDivider />
