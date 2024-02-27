@@ -404,7 +404,7 @@ const KonfigurationsKomponente: React.FC = () => {
         <SpaceDivider />
         <Styledbox>
           <CheckBox
-            label="Cors System"
+            label="Cors System Default"
             checked={konfiguration.cors}
             onChange={(e) => {
               const updatedConf = { ...konfiguration };
@@ -412,6 +412,8 @@ const KonfigurationsKomponente: React.FC = () => {
               setKonfiguration(updatedConf);
             }}
           />
+           {konfiguration.cors && (
+            <>
           <SpaceDivider />
           <CheckBox
             label="Cors Advanced"
@@ -449,6 +451,8 @@ const KonfigurationsKomponente: React.FC = () => {
                 validationType={''} notEmpty={false} 
               />
             </>
+          )}
+          </>
           )}
         </Styledbox>
         <SpaceDivider />
