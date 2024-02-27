@@ -59,12 +59,13 @@ const KonfigurationsKomponente: React.FC = () => {
         if (!response.ok) {
           setAlertState(true);
           setAlert(`HTTP error! status: ${response.status}`);
-          throw new Error(`HTTP error! status: ${response.status}`);
+          
         } else {
           setAlertState(false);
           setAlert('');
         }
         const json: Configuration = await response.json();
+        console.log(json);
         setKonfiguration(json);
       } catch (error) {
         setAlertState(true);
@@ -388,6 +389,8 @@ const KonfigurationsKomponente: React.FC = () => {
               setKonfiguration(updatedConf);
             }}
           />
+           {konfiguration.cors && (
+            <>
           <SpaceDivider />
           <CheckBox
             label="Cors Advanced"
@@ -425,6 +428,8 @@ const KonfigurationsKomponente: React.FC = () => {
                 validationType={''} notEmpty={false} 
               />
             </>
+          )}
+          </>
           )}
         </Styledbox>
         <SpaceDivider />
