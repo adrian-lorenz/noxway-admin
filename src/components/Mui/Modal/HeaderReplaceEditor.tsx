@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button, IconButton, TextField, Dialog, DialogActions, DialogContent, DialogTitle, Table, TableBody, TableCell, TableRow, TableContainer, Paper, Typography } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
+import GetLng from '../Language/GetLng';
 
 interface Entry {
   Header: string;
@@ -62,7 +63,7 @@ const HeaderReplaceEditor: React.FC<HeaderReplaceEditorProps> = ({ list, setList
         </Table>
       </TableContainer>
       <Button startIcon={<AddIcon />} onClick={handleClickOpen} variant="contained" size="small">
-        Neuer Eintrag
+      {GetLng(12)}
       </Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>{modalCaption}</DialogTitle>
@@ -97,8 +98,8 @@ const HeaderReplaceEditor: React.FC<HeaderReplaceEditorProps> = ({ list, setList
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Abbrechen</Button>
-          <Button onClick={handleAddEntry}>Hinzufügen</Button>
+        <Button onClick={handleClose}>{GetLng(14)}</Button>
+          <Button onClick={handleAddEntry}>{GetLng(13)}</Button>
         </DialogActions>
       </Dialog>
     </div>

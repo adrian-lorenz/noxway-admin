@@ -2,6 +2,7 @@ import React, { useState, ChangeEvent } from 'react';
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
 import TextBoxNormal from '../Textbox/TextBoxNormal';
 import SpacheDivider from '../Tools/Divider';
+import GetLng from '../Language/GetLng';
 
 interface StringModalProps {
   modalcaption: string;
@@ -61,8 +62,8 @@ const StringModal: React.FC<StringModalProps> = ({
           <SpacheDivider />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Abbrechen</Button>
-          <Button onClick={handleAddEntry}>Hinzufügen</Button>
+        <Button onClick={handleClose}>{GetLng(14)}</Button>
+          <Button onClick={handleAddEntry}>{GetLng(13)}</Button>
         </DialogActions>
       </Dialog>
     </div>

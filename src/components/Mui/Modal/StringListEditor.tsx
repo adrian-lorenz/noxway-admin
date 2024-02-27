@@ -4,6 +4,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
 import TextBoxNormal from '../Textbox/TextBoxNormal';
 import SpaceDivider from '../Tools/Divider';
+import GetLng from '../Language/GetLng';
 
 interface StringlistEditorProps {
   whitelist: string[];
@@ -59,7 +60,7 @@ const StringlistEditor: React.FC<StringlistEditorProps> = ({ whitelist, setWhite
         </Table>
       </TableContainer>
       <Button startIcon={<AddIcon />} onClick={handleClickOpen} variant="contained" size="small">
-        Neuer Eintrag
+        {GetLng(12)}
       </Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>{modalcaption}</DialogTitle>
@@ -77,8 +78,9 @@ const StringlistEditor: React.FC<StringlistEditorProps> = ({ whitelist, setWhite
                  
                        />
         <DialogActions>
-          <Button onClick={handleClose}>Abbrechen</Button>
-          <Button onClick={handleAddEntry}>Hinzufügen</Button>
+        <Button onClick={handleClose}>{GetLng(14)}</Button>
+          <Button onClick={handleAddEntry}>{GetLng(13)}</Button>
+
         </DialogActions>
       </Dialog>
     </div>

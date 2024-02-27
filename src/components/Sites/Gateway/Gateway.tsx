@@ -11,6 +11,8 @@ import StyleHR from '../../Mui/Tools/StyleHr';
 import LoadingSpinner from '../../LoadingSpinner/LoadingSpinner';
 import { Alert, AlertTitle } from '@mui/material';
 import SimpleModal from '../../Mui/Modal/Dialog';
+import DescBox from '../../Mui/InfoBox/DescBox';
+import GetLng from '../../Mui/Language/GetLng';
 
 interface Configuration {
   name: string;
@@ -144,10 +146,12 @@ const KonfigurationsKomponente: React.FC = () => {
           Gateway Basic Configuration
         </Typography>
         <SpaceDivider />
+        <Styledbox>
+     
         <TextBox
         id='t1'
           label="Gateway Name"
-          helperText="Der Name deines Gateways"
+          helperText=""
           value={konfiguration.name}
           onChange={(e) => {
             const updatedConf = { ...konfiguration };
@@ -156,7 +160,10 @@ const KonfigurationsKomponente: React.FC = () => {
           }}
           
         />
+        </Styledbox>
         <SpaceDivider />
+        <Styledbox>
+        <DescBox title={100} description={500} />
         <TextBox
             id='t2'
           label="Prefix"
@@ -170,7 +177,11 @@ const KonfigurationsKomponente: React.FC = () => {
           }}
           
         />
+        
+        </Styledbox>
         <SpaceDivider />
+        <Styledbox>
+        <DescBox title={101} description={501} />
         <CheckBox
           label="Debug"
           checked={konfiguration.debug}
@@ -180,7 +191,10 @@ const KonfigurationsKomponente: React.FC = () => {
             setKonfiguration(updatedConf);
           }}
         />
+        
+        </Styledbox>
         <SpaceDivider />
+        <Styledbox>
         <TextBox
         id='t3'
           label="HTTP Port"
@@ -207,8 +221,10 @@ const KonfigurationsKomponente: React.FC = () => {
             setKonfiguration(updatedConf);
           }}
         />
+        </Styledbox>
         <SpaceDivider />
         <Styledbox>
+        <DescBox title={103} description={503} />
           <CheckBox
             label="Export Log"
             checked={konfiguration.exportLog}
@@ -218,14 +234,15 @@ const KonfigurationsKomponente: React.FC = () => {
               setKonfiguration(updatedConf);
             }}
           />
+       
           <SpaceDivider />
           {konfiguration.exportLog && (
             <>
               <SpaceDivider />
               <TextBox
               id='t3'
-                label="Export Log Path"
-                helperText="Pfad zum Log"
+                label={GetLng(5)}
+                helperText=""
                 value={konfiguration.exportLogPath}
                 onChange={(e) => {
                   const updatedConf = { ...konfiguration };
@@ -239,8 +256,9 @@ const KonfigurationsKomponente: React.FC = () => {
         </Styledbox>
         <SpaceDivider />
         <Styledbox>
+        <DescBox title={102} description={502} />
           <CheckBox
-            label="Host Name Check"
+            label="Hostname Check"
             checked={konfiguration.hostnamecheck}
             onChange={(e) => {
               const updatedConf = { ...konfiguration };
@@ -248,6 +266,7 @@ const KonfigurationsKomponente: React.FC = () => {
               setKonfiguration(updatedConf);
             }}
           />
+       
           <SpaceDivider />
           {konfiguration.hostnamecheck && (
             <>
@@ -256,7 +275,7 @@ const KonfigurationsKomponente: React.FC = () => {
                 id='t4'
                
                 label="Hostname"
-                helperText="Domain tld oder IP adress"
+                helperText={GetLng(6)}
                 value={konfiguration.hostname}
                 onChange={(e) => {
                   const updatedConf = { ...konfiguration };
@@ -270,6 +289,7 @@ const KonfigurationsKomponente: React.FC = () => {
         </Styledbox>
         <SpaceDivider />
         <Styledbox>
+        <DescBox title={104} description={504} />
           <CheckBox
             label="SSL"
             checked={konfiguration.ssl}
@@ -279,14 +299,15 @@ const KonfigurationsKomponente: React.FC = () => {
               setKonfiguration(updatedConf);
             }}
           />
+         
           <SpaceDivider />
           {konfiguration.ssl && (
             <>
               <SpaceDivider />
               <TextBox
                 id='t5'
-                label="Pem CRT Pfad"
-                helperText="Pfad zur .pem CRT Datei"
+                label={GetLng(7)}
+                helperText=""
                 value={konfiguration.pemCrt}
                 onChange={(e) => {
                   const updatedConf = { ...konfiguration };
@@ -298,8 +319,8 @@ const KonfigurationsKomponente: React.FC = () => {
               <SpaceDivider />
               <TextBox
                 id='t6'
-                label="Pem Key Pfad"
-                helperText="Pfad zur .pem Key Datei"
+                label={GetLng(8)}
+                helperText=""
                 value={konfiguration.pemKey}
                 onChange={(e) => {
                   const updatedConf = { ...konfiguration };
@@ -313,6 +334,7 @@ const KonfigurationsKomponente: React.FC = () => {
         </Styledbox>
         <SpaceDivider />
         <Styledbox>
+        <DescBox title={105} description={505} />
           <CheckBox
             label="Rate Limiter"
             checked={konfiguration.rateLimiter }
@@ -322,14 +344,15 @@ const KonfigurationsKomponente: React.FC = () => {
               setKonfiguration(updatedConf);
             }}
           />
+          
           <SpaceDivider />
           {konfiguration.rateLimiter && (
             <>
               <SpaceDivider />
               <TextBox
               id='t7'
-                label="Rate"
-                helperText="Connect rate per IP * Window"
+                label={GetLng(9)}
+                helperText=""
                 validationType={'number'}
                 value={konfiguration.rate.rate.toString()}
                 onChange={(e) => {
@@ -342,8 +365,8 @@ const KonfigurationsKomponente: React.FC = () => {
               <SpaceDivider />
               <TextBox
               id='t8'
-                label="Window"
-                helperText="Minutes"
+                label={GetLng(10)}
+                helperText=""
                 validationType={'number'}
                 value={(konfiguration.rate.window / 1_000_000_000 / 60).toString()}
                 onChange={(e) => {
@@ -359,7 +382,7 @@ const KonfigurationsKomponente: React.FC = () => {
                 notEmpty={true}
                 whitelist={konfiguration.rateWhitelist || []}
                 setWhitelist={updateRateWhitelist}
-                modalcaption={'Neue IP hinzufügen '}
+                modalcaption={GetLng(11)}
                 caption={'Rate Whitelist'}
               />
             </>
@@ -369,17 +392,21 @@ const KonfigurationsKomponente: React.FC = () => {
       
         <SpaceDivider />
         <Styledbox>
+        <DescBox title={107} description={507} />
           <StringlistEditor
             validationType={'ip'}
             notEmpty={true}
             whitelist={konfiguration.systemWhitelist}
             setWhitelist={updateSystemWhitelist}
-            modalcaption={'Neue IP hinzufügen'}
+            modalcaption={GetLng(11)}
             caption={'Internal Whitelist / Login / Garaphs'}
           />
+          
         </Styledbox>
+       
         <SpaceDivider />
         <Styledbox>
+        <DescBox title={106} description={506} />
           <CheckBox
             label="Cors System Default"
             checked={konfiguration.cors}
@@ -389,6 +416,7 @@ const KonfigurationsKomponente: React.FC = () => {
               setKonfiguration(updatedConf);
             }}
           />
+          
            {konfiguration.cors && (
             <>
           <SpaceDivider />
