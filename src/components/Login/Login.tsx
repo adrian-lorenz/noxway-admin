@@ -69,11 +69,10 @@ function LoginForm() {
     if (location.includes('localhost')) {
       location = location.replace('localhost', '127.0.0.1');
     }
-
-    const parts = location.split("/");
-    const baseUrl = parts.slice(0, 3).join("/");
-
-    localStorage.setItem('host', baseUrl);
+    if (location.includes('/web')) {
+      location = location.replace('/web', '');
+    }
+    localStorage.setItem('host', location);
   }
   const [userName, setUserName] = useState<string>('');
   const [password, setPassword] = useState<string>('');

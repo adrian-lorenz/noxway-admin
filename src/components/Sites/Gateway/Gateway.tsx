@@ -381,7 +381,7 @@ const KonfigurationsKomponente: React.FC = () => {
         <SpaceDivider />
         <Styledbox>
           <CheckBox
-            label="Cors System"
+            label="Cors System Default"
             checked={konfiguration.cors}
             onChange={(e) => {
               const updatedConf = { ...konfiguration };
