@@ -6,6 +6,7 @@ import { LineChart } from '@mui/x-charts/LineChart';
 import InfoBox from '../../Mui/Dashboard/InfoBox';
 import InfoBoxesContainer from '../../Mui/Dashboard/InfoBoxesContainer';
 import SpaceDivider from '../../Mui/Tools/Divider';
+import getLng from "../../Mui/Language/GetLng.tsx";
 
 interface Data {
   Service: any;
@@ -160,7 +161,7 @@ function Dashboard() {
     <Container title="Home">
       <Box sx={{display: 'flex', flexDirection: 'row', gap: 2, flexWrap: 'wrap', alignItems: 'center', mb: 2}}>
         <FormControl sx={{minWidth: 120}}>
-          <InputLabel id="span-select-label">Zeitspanne</InputLabel>
+          <InputLabel id="span-select-label">{getLng(15)}</InputLabel>
           <Select
             labelId="span-select-label"
             id="span-select"
@@ -168,13 +169,13 @@ function Dashboard() {
             label="Zeitspanne"
             onChange={(e) => setSpan(e.target.value as string)}
           >
-            <MenuItem value="all">Alle</MenuItem>
-            <MenuItem value="day">Tag</MenuItem>
-            <MenuItem value="hour">Stunde</MenuItem>
+            <MenuItem value="all">{getLng(19)}</MenuItem>
+            <MenuItem value="day">{getLng(21)}</MenuItem>
+            <MenuItem value="hour">{getLng(22)}</MenuItem>
           </Select>
         </FormControl>
         <FormControl sx={{minWidth: 120}}>
-          <InputLabel id="update-interval-select-label">Aktualisierungsperiode</InputLabel>
+          <InputLabel id="update-interval-select-label">{getLng(16)}</InputLabel>
           <Select
             labelId="update-interval-select-label"
             id="update-interval-select"
@@ -182,12 +183,12 @@ function Dashboard() {
             label="Aktualisierungsperiode"
             onChange={(e) => setUpdateInterval(Number(e.target.value))}
           >
-            <MenuItem value={10}>10 Sekunden</MenuItem>
-            <MenuItem value={30}>30 Sekunden</MenuItem>
-            <MenuItem value={60}>60 Sekunden</MenuItem>
+            <MenuItem value={10}>10 {getLng(20)}</MenuItem>
+            <MenuItem value={30}>30 {getLng(20)}</MenuItem>
+            <MenuItem value={60}>60 {getLng(20)}</MenuItem>
           </Select>
         </FormControl>
-        <Button variant="contained" onClick={fetchDataManual}>Daten aktualisieren</Button>
+        <Button variant="contained" onClick={fetchDataManual}>{getLng(17)}</Button>
       </Box>
 
       {gdata && (

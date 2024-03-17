@@ -21,7 +21,7 @@ const LanguageSelector: React.FC = () => {
 
   return (
     <FormControl fullWidth>
-      <InputLabel id="language-selector-label">Sprache</InputLabel>
+      <InputLabel id="language-selector-label">Language</InputLabel>
       <Select
         labelId="language-selector-label"
         id="language-selector"
@@ -30,7 +30,7 @@ const LanguageSelector: React.FC = () => {
         onChange={handleChange}
       >
         <MenuItem value="de">Deutsch</MenuItem>
-        <MenuItem value="en">Englisch</MenuItem>
+        <MenuItem value="en">English</MenuItem>
       </Select>
     </FormControl>
   );

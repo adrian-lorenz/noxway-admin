@@ -62,10 +62,11 @@ const StringlistEditor: React.FC<StringlistEditorProps> = ({ whitelist, setWhite
       <Button startIcon={<AddIcon />} onClick={handleClickOpen} variant="contained" size="small">
         {GetLng(12)}
       </Button>
-      <Dialog open={open} onClose={handleClose}>
+      <Dialog open={open} onClose={handleClose} >
         <DialogTitle>{modalcaption}</DialogTitle>
         <TextBoxNormal
                   label="Eintrag"
+
 
 
 

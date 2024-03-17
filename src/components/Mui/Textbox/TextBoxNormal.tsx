@@ -85,7 +85,7 @@ const TextBoxNormal: React.FC<TextBoxNormalProps> = ({ id, label, helperText, va
 
   return (
     <TextField
-   
+
       id={id}
       label={label}
       variant="outlined"
